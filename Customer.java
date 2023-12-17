@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class Customer here.
@@ -7,10 +8,11 @@
  */
 public class Customer {
     String name;
-
+    ArrayList<ShowingSeat> reservations;
 
     public Customer(String name) {
         this.name = name;
+        reservations = new ArrayList<>();
     }
 
     /**
@@ -30,5 +32,4 @@ public class Customer {
     public void call(String message) {
         System.out.println("Called " + name);
     }
-
 }

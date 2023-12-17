@@ -14,7 +14,6 @@ public class Cinema {
         this.movies = movies;
     }
 
-
     /**
      * Adds a movie to the cinema's list of movies.
      *

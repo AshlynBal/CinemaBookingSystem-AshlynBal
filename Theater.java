@@ -5,10 +5,10 @@
  */
 
 public class Theater {
-    Row[] rows;
+    Seat[] seats;
 
-    public Theater(Row[] rows) {
-        this.rows = rows;
+    public Theater(Seat[] seats) {
+        this.seats = seats;
     }
 
     /**
@@ -16,7 +16,7 @@ public class Theater {
      *
      * @return rows in theater
      */
-    public Row[] getRows() {
-        return rows;
+    public Seat[] getSeats() {
+        return seats;
     }
 }

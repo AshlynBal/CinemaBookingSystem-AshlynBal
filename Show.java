@@ -13,7 +13,9 @@ public class Show {
     ShowingSeat[] showingSeats;
 
     public Show(Theater theater, Movie movie, Date time) {
-
+        this.theater = theater;
+        this.movie = movie;
+        this.time = time;
     }
 
     /**
