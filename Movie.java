@@ -1,3 +1,5 @@
+import java.awt.*;
+import java.time.Duration;
 
 /**
  * Write a description of class Movie here.
@@ -5,29 +7,50 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Movie
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Movie {
+    String name;
+    Image image;
+    Duration length;
 
-    /**
-     * Constructor for objects of class Movie
-     */
-    public Movie()
-    {
-        // initialise instance variables
-        x = 0;
+    public Movie(String name, Image image, Duration length) {
+        this.name = name;
+        this.image = image;
+        this.length = length;
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Getter for name of the movie.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return name of the movie
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Getter for the movie's image.
+     *
+     * @return movie's image
+     */
+    public Image getImage() {
+        return image;
+    }
+
+    /**
+     * Getter for the length of the movie.
+     *
+     * @return length of the movie
+     */
+    public Duration getLength() {
+        return length;
+    }
+
+    /**
+     * Returns details about the movie.
+     *
+     * @return details about the movie.
+     */
+    public String getDetails() {
+        return null;
     }
 }

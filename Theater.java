@@ -1,33 +1,22 @@
-
 /**
- * Write a description of class Theater here.
+ * Room where showings of movies are held
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ashlyn Balicki
  */
-public class Theater
-{
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class Theater
-     */
-    public Theater()
-    {
-        // initialise instance variables
-        x = 0;
+public class Theater {
+    Row[] rows;
+
+    public Theater(Row[] rows) {
+        this.rows = rows;
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Getter for rows
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return rows in theater
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public Row[] getRows() {
+        return rows;
     }
 }

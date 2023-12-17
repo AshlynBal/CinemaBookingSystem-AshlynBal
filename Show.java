@@ -1,33 +1,98 @@
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
- * Write a description of class Show here.
+ * A showing of a movie.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ashlyn Balicki
  */
-public class Show
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Show {
+    Theater theater;
+    Movie movie;
+    Date time;
+    ShowingSeat[] showingSeats;
 
-    /**
-     * Constructor for objects of class Show
-     */
-    public Show()
-    {
-        // initialise instance variables
-        x = 0;
+    public Show(Theater theater, Movie movie, Date time) {
+
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Reserves a showingSeat in the system.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param showingSeat showingSeat to get reserved
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void reserve(ShowingSeat showingSeat) {
+        System.out.println("ShowingSeat reserved!");
+    }
+
+    /**
+     * Unreserves a showingSeat in the system.
+     *
+     * @param showingSeat showingSeat to unreserve
+     */
+    public void cancelReservation(ShowingSeat showingSeat) {
+        System.out.println("ShowingSeat unreserved!");
+    }
+
+    /**
+     * Checks if a showingSeat is reserved.
+     *
+     * @param showingSeat showingSeat to check
+     * @return if the showingSeat is reserved
+     */
+    public boolean isSeatReserved(ShowingSeat showingSeat) {
+        return showingSeat.isReserved();
+    }
+
+    /**
+     * Getter for showingSeats in the showing.
+     *
+     * @return showingSeats in the showing
+     */
+    public ShowingSeat[] getSeats() {
+        return showingSeats;
+    }
+
+    /**
+     * Getter for movie details.
+     *
+     * @return movie details
+     */
+    public String getDetails() {
+        return movie.getDetails();
+    }
+
+    /**
+     * Getter for time of the showing.
+     *
+     * @return time of the showing
+     */
+    public Date getTime() {
+        return time;
+    }
+
+    /**
+     * Gets all the customers in the show.
+     *
+     * @return customers in the show
+     */
+    public ArrayList<Customer> getCustomers() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        for (ShowingSeat showingSeat : getSeats()) {
+            Customer customer = showingSeat.getReservee();
+            if (!customers.contains(customer)) {
+                customers.add(customer);
+            }
+        }
+        return customers;
+    }
+
+    /**
+     * Getter for theater
+     *
+     * @return theater
+     */
+    public Theater getTheater() {
+        return theater;
     }
 }

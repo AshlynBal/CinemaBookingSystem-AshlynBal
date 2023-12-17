@@ -5,29 +5,30 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Customer
-{
-    // instance variables - replace the example below with your own
-    private int x;
+public class Customer {
+    String name;
 
-    /**
-     * Constructor for objects of class Customer
-     */
-    public Customer()
-    {
-        // initialise instance variables
-        x = 0;
+
+    public Customer(String name) {
+        this.name = name;
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Getter for customer's name.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return customer's name
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String getName() {
+        return name;
     }
+
+    /**
+     * Calls a customer and says a message.
+     *
+     * @param message message to tell the customer
+     */
+    public void call(String message) {
+        System.out.println("Called " + name);
+    }
+
 }
