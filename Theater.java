@@ -6,9 +6,11 @@
 
 public class Theater {
     Seat[] seats;
+    String name;
 
-    public Theater(Seat[] seats) {
+    public Theater(Seat[] seats, String name) {
         this.seats = seats;
+        this.name = name;
     }
 
     /**
@@ -18,5 +20,10 @@ public class Theater {
      */
     public Seat[] getSeats() {
         return seats;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

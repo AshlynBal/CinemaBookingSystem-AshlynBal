@@ -33,6 +33,7 @@ public class Cinema {
      */
     public void addMovie(Movie movie) {
         movies.add(movie);
+        System.out.println("Added " + movie);
     }
 
     /**
@@ -43,6 +44,7 @@ public class Cinema {
      */
     public void addShow(Show show, Theater theater) {
         shows.add(show);
+        System.out.println("Added " + show);
     }
 
     /**

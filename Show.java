@@ -97,4 +97,9 @@ public class Show {
     public Theater getTheater() {
         return theater;
     }
+
+    @Override
+    public String toString() {
+        return movie.name;
+    }
 }
