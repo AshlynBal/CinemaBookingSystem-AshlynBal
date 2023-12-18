@@ -32,7 +32,7 @@ public class Display {
     /**
      * Displays the available and unavailable showingSeats
      *
-     * @param showingSeats showingSeats in a cinema for a show
+     * @param seats seats in a cinema for a show
      */
     public void displaySeats(Map<Seat, ShowingSeat> seats) {
         System.out.println("Updating show seats");

@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
 /**
- * Write a description of class Customer here.
+ * A representation of customers in the system
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ashlyn Balicki
  */
 public class Customer {
     private String name;

@@ -63,9 +63,9 @@ public class Cinema {
         ArrayList<Customer> customers = show.getCustomers();
         show.cancelAllReservations();
         customers.forEach(customer -> {
-            System.out.print("Calling: " + customer.getName() + ": ");
             customer.notify("Your show has been cancelled.");
         });
+        shows.remove(show);
     }
 
     /**

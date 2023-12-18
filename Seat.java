@@ -1,3 +1,9 @@
+/**
+ * A seat in a theater
+ *
+ * @author Ashlyn Balicki
+ */
+
 public class Seat {
     private String location;
 

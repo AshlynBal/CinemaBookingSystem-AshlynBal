@@ -71,7 +71,6 @@ public class CinemaBookingSystem {
      * @param seats the seats to reserve
      * @return if the reservation was successful. If any seats are taken, return false.
      */
-
     public boolean reserveSeats(Customer customer, Show show, Seat... seats) {
         return show.reserve(customer, seats);
     }
@@ -86,6 +85,23 @@ public class CinemaBookingSystem {
         for (Seat seat : seats) {
             show.cancelReservation(seat);
         }
+    }
+
+    /**
+     * Cancels all of a users reservations for a show.
+     *
+     * @param show     show to cancel reservations for
+     * @param customer customer to remove reservations for
+     */
+    public void cancelUserReservations(Show show, Customer customer) {
+        int counter = 0;
+        for (ShowingSeat seat : customer.getReservations()) {
+            if (seat.getShow().equals(show)) {
+                show.cancelReservation(seat);
+                counter++;
+            }
+        }
+        System.out.println("Cancelled " + counter + " reservations.");
     }
 
     /**

@@ -19,6 +19,9 @@ public class Show {
         this.movie = movie;
         this.time = time;
         this.seats = new HashMap<>();
+        for (Seat seat : theater.getSeats()) {
+            seats.put(seat, new ShowingSeat(seat, this));
+        }
     }
 
     /**
@@ -55,6 +58,15 @@ public class Show {
      */
     public void cancelReservation(Seat seat) {
         seats.get(seat).cancelReservation();
+    }
+
+    /**
+     * Cancels a reservation.
+     *
+     * @param seat seat to unreserve
+     */
+    public void cancelReservation(ShowingSeat seat) {
+        seat.cancelReservation();
     }
 
     /**
