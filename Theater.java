@@ -22,8 +22,12 @@ public class Theater {
         return seats;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 }

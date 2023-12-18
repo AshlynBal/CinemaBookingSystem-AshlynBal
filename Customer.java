@@ -22,15 +22,6 @@ public class Customer {
     }
 
     /**
-     * Getter for customer's name.
-     *
-     * @return customer's name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
      * Notifies a customer.
      *
      * @param message message to tell the customer
@@ -65,6 +56,24 @@ public class Customer {
             }
         }
         return showSeats;
+    }
+
+    /**
+     * Getter for customer's name.
+     *
+     * @return customer's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setter for customer's name.
+     *
+     * @param name customer's new name
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

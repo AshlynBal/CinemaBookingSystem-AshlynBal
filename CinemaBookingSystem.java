@@ -19,7 +19,7 @@ public class CinemaBookingSystem {
     }
 
     /**
-     * Initializes the cinema booking system
+     * Initializes the cinema booking system with a cinema with all movies.
      */
     public CinemaBookingSystem() {
         this.display = new Display();
@@ -34,6 +34,13 @@ public class CinemaBookingSystem {
      * @return Showing of a movie at the given time and cinema
      */
     public Show findShow(Movie movie, Date date) {
+        for (Show show : findShows(movie)) {
+            if (show.getTime().equals(date)) {
+                System.out.println("Found " + movie.getName() + " at " + date);
+                return show;
+            }
+        }
+        System.out.println("Failed to find " + movie.getName() + " at " + date);
         return null;
     }
 

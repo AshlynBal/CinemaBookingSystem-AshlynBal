@@ -13,10 +13,12 @@ public class Cinema {
 
     public Cinema(ArrayList<Movie> movies) {
         this.movies = movies;
+        this.shows = new ArrayList<>();
         theaters = new ArrayList<>();
     }
 
     public Cinema(Movie... movies) {
+        this.shows = new ArrayList<>();
         this.movies = new ArrayList<>();
         this.movies.addAll(Arrays.asList(movies));
         theaters = new ArrayList<>();
@@ -34,12 +36,11 @@ public class Cinema {
     }
 
     /**
-     * Showing of a movie to get displayed at the cinema
+     * Add showing of a movie to
      *
-     * @param show    what show
-     * @param theater what theater
+     * @param show what show
      */
-    public void addShow(Show show, Theater theater) {
+    public void addShow(Show show) {
         shows.add(show);
         System.out.println("Added " + show);
     }
