@@ -1,18 +1,30 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
- * The building holding al of the theaters
+ * A building holding theaters
  *
  * @author Ashlyn Balicki
  */
 public class Cinema {
+    String name;
     ArrayList<Movie> movies;
     ArrayList<Show> shows;
     ArrayList<Theater> theaters;
 
-    public Cinema(ArrayList<Movie> movies) {
+    public Cinema(String name, ArrayList<Movie> movies) {
+        this.name = name;
         this.movies = movies;
+        theaters = new ArrayList<>();
     }
+
+    public Cinema(String name, Movie... movies) {
+        this.name = name;
+        this.movies = new ArrayList<>();
+        this.movies.addAll(Arrays.asList(movies));
+        theaters = new ArrayList<>();
+    }
+
 
     /**
      * Adds a movie to the cinema's list of movies.

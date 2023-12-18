@@ -18,6 +18,18 @@ public class Movie {
         this.length = length;
     }
 
+    public Movie(String name, Image image, int length) {
+        this(name, image, Duration.ofMinutes(length));
+    }
+
+    public Movie(String name, Duration length) {
+        this(name, null, length);
+    }
+
+    public Movie(String name, int length) {
+        this(name, null, length);
+    }
+
     /**
      * Getter for name of the movie.
      *
@@ -52,5 +64,10 @@ public class Movie {
      */
     public String getDetails() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

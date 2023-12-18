@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -8,16 +9,19 @@ import java.util.Date;
  */
 public class CinemaBookingSystem {
     Display display;
-    Cinema[] cinemas;
+    ArrayList<Cinema> cinemas;
 
     /**
      * Initializes the cinema booking system
      */
-    public CinemaBookingSystem() {
-        display = new Display();
-        cinemas = new Cinema[]{};
+    public CinemaBookingSystem(ArrayList<Cinema> cinemas) {
+        this.display = new Display();
+        this.cinemas = cinemas;
     }
 
+    public CinemaBookingSystem() {
+        this(new ArrayList<>());
+    }
 
     /**
      * Finds showing of a movie at the given date in the given cinema.
@@ -41,7 +45,6 @@ public class CinemaBookingSystem {
     public ArrayList<Show> findShows(Movie movie, Cinema cinema) {
         return null;
     }
-
 
     /**
      * Retrieves & displays show's name and time.
@@ -83,4 +86,16 @@ public class CinemaBookingSystem {
         cinema.cancelShow(show);
     }
 
+    public void addCinema(Cinema cinema) {
+        cinemas.add(cinema);
+    }
+
+    public void initCinemas() {
+        Cinema[] cinemas = new Cinema[]{
+                new Cinema("Reading Cinemas", Movies.SHREK, Movies.SHREK2, Movies.PUSSINBOOTS, Movies.PUSSINBOOTS2),
+                new Cinema("Hillsborough Cinemas", Movies.SHREK2, Movies.SHREK3, Movies.SHREK4, Movies.PUSSINBOOTS2),
+                new Cinema("AMC Bridgewater", Movies.SHREK4, Movies.PUSSINBOOTS, Movies.PUSSINBOOTS2)
+        };
+        this.cinemas.addAll(Arrays.asList(cinemas));
+    }
 }
