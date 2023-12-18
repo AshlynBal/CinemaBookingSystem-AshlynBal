@@ -34,7 +34,25 @@ public class Customer {
     }
 
     /**
-     * Getter for reservations
+     * Reserves a seat.
+     *
+     * @param seat seat to reserve
+     */
+    public void addReservation(ShowingSeat seat) {
+        reservations.add(seat);
+    }
+
+    /**
+     * Removes a reserved seat from reservations.
+     *
+     * @param seat reserved seat to unreserve
+     */
+    public void removeReservation(ShowingSeat seat) {
+        reservations.remove(seat);
+    }
+
+    /**
+     * Getter for reservations.
      *
      * @return customer's reservations
      */

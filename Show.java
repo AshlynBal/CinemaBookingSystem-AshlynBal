@@ -34,7 +34,7 @@ public class Show {
     }
 
     /**
-     * Marks one or more seats as reserved in the system.
+     * Marks one or more seats as reserved in the system, and updates the customer.
      *
      * @param reserveSeats seats to get reserved
      * @return if reservation was successful
@@ -47,6 +47,7 @@ public class Show {
         }
         for (Seat seat : reserveSeats) {
             seats.get(seat).reserve(customer);
+            customer.addReservation(seats.get(seat));
         }
         return true;
     }
@@ -57,7 +58,7 @@ public class Show {
      * @param seat seat to unreserve
      */
     public void cancelReservation(Seat seat) {
-        seats.get(seat).cancelReservation();
+        cancelReservation(seats.get(seat));
     }
 
     /**
@@ -66,6 +67,7 @@ public class Show {
      * @param seat seat to unreserve
      */
     public void cancelReservation(ShowingSeat seat) {
+        seat.getReservee().removeReservation(seat);
         seat.cancelReservation();
     }
 
