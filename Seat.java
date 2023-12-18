@@ -1,7 +1,16 @@
 public class Seat {
-    String location;
+    private String location;
 
     public Seat(String location) {
         this.location = location;
+    }
+
+    /**
+     * Getter for seat location in theater
+     *
+     * @return seat's location in theater
+     */
+    public String getLocation() {
+        return location;
     }
 }

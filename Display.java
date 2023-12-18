@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Map;
 
 /**
  * The class controlling what gets displayed to the monitor.
@@ -33,8 +34,8 @@ public class Display {
      *
      * @param showingSeats showingSeats in a cinema for a show
      */
-    public void displaySeats(ShowingSeat[] showingSeats) {
-        System.out.println("Displaying showingSeats");
+    public void displaySeats(Map<Seat, ShowingSeat> seats) {
+        System.out.println("Updating show seats");
     }
 
     public void displayNotification(String notification) {

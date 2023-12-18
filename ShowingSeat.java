@@ -1,14 +1,13 @@
-
 /**
  * A seat in a show.
  *
  * @author Ashlyn Balicki
  */
 public class ShowingSeat {
-    Seat seat;
-    Show show;
-    boolean reserved;
-    Customer reservee;
+    private Seat seat;
+    private Show show;
+    private boolean reserved;
+    private Customer reservee;
 
 
     public ShowingSeat(Seat seat, Show show) {
@@ -25,7 +24,6 @@ public class ShowingSeat {
         if (reserved) return false;
         reserved = true;
         this.reservee = reservee;
-        show.reserve(this);
         return true;
     }
 
@@ -35,10 +33,13 @@ public class ShowingSeat {
      * @return if the seat reservation was successfully canceled
      */
     public boolean cancelReservation() {
-        if (!reserved) return false;
+        if (!reserved) {
+            System.out.println("Seat " + seat.getLocation() + " was not reserved!");
+            return false;
+        }
         reserved = false;
+        reservee.notify(reservee.getName() + "'s reservation for \"" + show + "\" has been cancelled.");
         this.reservee = null;
-        show.cancelReservation(this);
         return true;
     }
 

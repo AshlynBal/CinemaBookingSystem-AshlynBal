@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A showing of a movie.
@@ -7,43 +9,69 @@ import java.util.Date;
  * @author Ashlyn Balicki
  */
 public class Show {
-    Theater theater;
-    Movie movie;
-    Date time;
-    ShowingSeat[] showingSeats;
+    private Theater theater;
+    private Movie movie;
+    private Date time;
+    private HashMap<Seat, ShowingSeat> seats;
 
     public Show(Theater theater, Movie movie, Date time) {
         this.theater = theater;
         this.movie = movie;
         this.time = time;
+        this.seats = new HashMap<>();
     }
 
     /**
-     * Reserves a showingSeat in the system.
+     * Marks a seat as reserved in the system.
      *
-     * @param showingSeat showingSeat to get reserved
+     * @param showingSeat seat to get reserved
      */
     public void reserve(ShowingSeat showingSeat) {
-        System.out.println("ShowingSeat reserved!");
+        System.out.println("Seat now reserved in system");
     }
 
     /**
-     * Unreserves a showingSeat in the system.
+     * Marks one or more seats as reserved in the system.
      *
-     * @param showingSeat showingSeat to unreserve
+     * @param reserveSeats seats to get reserved
+     * @return if reservation was successful
      */
-    public void cancelReservation(ShowingSeat showingSeat) {
-        System.out.println("ShowingSeat unreserved!");
+    public boolean reserve(Customer customer, Seat... reserveSeats) {
+        for (Seat seat : reserveSeats) {
+            if (seats.get(seat).isReserved()) {
+                return false;
+            }
+        }
+        for (Seat seat : reserveSeats) {
+            seats.get(seat).reserve(customer);
+        }
+        return true;
     }
 
     /**
-     * Checks if a showingSeat is reserved.
+     * Cancels a reservation.
      *
-     * @param showingSeat showingSeat to check
-     * @return if the showingSeat is reserved
+     * @param seat seat to unreserve
      */
-    public boolean isSeatReserved(ShowingSeat showingSeat) {
-        return showingSeat.isReserved();
+    public void cancelReservation(Seat seat) {
+        seats.get(seat).cancelReservation();
+    }
+
+    /**
+     * Cancels all reservations for a show
+     */
+    public void cancelAllReservations() {
+        seats.keySet().forEach(a -> cancelReservation(a));
+    }
+
+    /**
+     * Checks if a seat is reserved.
+     *
+     * @param seat seat to check
+     * @return if the seat is reserved
+     */
+    public boolean isSeatReserved(Seat seat) {
+        return seats.get(seat).isReserved();
     }
 
     /**
@@ -51,8 +79,8 @@ public class Show {
      *
      * @return showingSeats in the showing
      */
-    public ShowingSeat[] getSeats() {
-        return showingSeats;
+    public Map<Seat, ShowingSeat> getSeats() {
+        return seats;
     }
 
     /**
@@ -74,13 +102,23 @@ public class Show {
     }
 
     /**
+     * Getter for theater.
+     *
+     * @return theater of the showing
+     */
+
+    public Theater getTheater() {
+        return theater;
+    }
+
+    /**
      * Gets all the customers in the show.
      *
      * @return customers in the show
      */
     public ArrayList<Customer> getCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
-        for (ShowingSeat showingSeat : getSeats()) {
+        for (ShowingSeat showingSeat : seats.values()) {
             Customer customer = showingSeat.getReservee();
             if (!customers.contains(customer)) {
                 customers.add(customer);
@@ -90,16 +128,21 @@ public class Show {
     }
 
     /**
-     * Getter for theater
+     * Getter for movie.
      *
-     * @return theater
+     * @return movie of the show
      */
-    public Theater getTheater() {
-        return theater;
+    public Movie getMovie() {
+        return movie;
     }
 
+    /**
+     * Returns the movie's name.
+     *
+     * @return movie's name
+     */
     @Override
     public String toString() {
-        return movie.name;
+        return movie.getName();
     }
 }

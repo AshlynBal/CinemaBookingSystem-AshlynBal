@@ -8,9 +8,9 @@ import java.time.Duration;
  * @version (a version number or a date)
  */
 public class Movie {
-    String name;
-    Image image;
-    Duration length;
+    private String name;
+    private Image image;
+    private Duration length;
 
     public Movie(String name, Image image, Duration length) {
         this.name = name;

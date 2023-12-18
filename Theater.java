@@ -5,8 +5,8 @@
  */
 
 public class Theater {
-    Seat[] seats;
-    String name;
+    private Seat[] seats;
+    private String name;
 
     public Theater(Seat[] seats, String name) {
         this.seats = seats;

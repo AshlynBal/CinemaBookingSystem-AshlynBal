@@ -7,19 +7,16 @@ import java.util.Arrays;
  * @author Ashlyn Balicki
  */
 public class Cinema {
-    String name;
-    ArrayList<Movie> movies;
-    ArrayList<Show> shows;
-    ArrayList<Theater> theaters;
+    private ArrayList<Movie> movies;
+    private ArrayList<Show> shows;
+    private ArrayList<Theater> theaters;
 
-    public Cinema(String name, ArrayList<Movie> movies) {
-        this.name = name;
+    public Cinema(ArrayList<Movie> movies) {
         this.movies = movies;
         theaters = new ArrayList<>();
     }
 
-    public Cinema(String name, Movie... movies) {
-        this.name = name;
+    public Cinema(Movie... movies) {
         this.movies = new ArrayList<>();
         this.movies.addAll(Arrays.asList(movies));
         theaters = new ArrayList<>();
@@ -54,6 +51,7 @@ public class Cinema {
      */
     public void addTheater(Theater theater) {
         theaters.add(theater);
+        System.out.println("Added " + theater);
     }
 
     /**
@@ -62,14 +60,11 @@ public class Cinema {
      * @param show show to cancel
      */
     public void cancelShow(Show show) {
-        ShowingSeat[] showingSeats = show.getSeats();
         ArrayList<Customer> customers = show.getCustomers();
-        for (ShowingSeat showingSeat : showingSeats) {
-            showingSeat.cancelReservation();
-        }
+        show.cancelAllReservations();
         customers.forEach(customer -> {
             System.out.print("Calling: " + customer.getName() + ": ");
-            customer.call("Your show has been cancelled.");
+            customer.notify("Your show has been cancelled.");
         });
     }
 
@@ -80,6 +75,22 @@ public class Cinema {
      */
     public ArrayList<Show> getShows() {
         return shows;
+    }
+
+    /**
+     * Getter for showings of a movie
+     *
+     * @param movie movie being checked for
+     * @return showings of a movie
+     */
+    public ArrayList<Show> getShows(Movie movie) {
+        ArrayList<Show> output = new ArrayList<>();
+        for (Show show : shows) {
+            if (show.getMovie() == movie) {
+                output.add(show);
+            }
+        }
+        return output;
     }
 
     /**

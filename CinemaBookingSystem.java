@@ -1,49 +1,50 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 /**
- * Write a description of class CinemaBookingSystem here.
+ * A system used to process user input commands.
  *
  * @author Ashlyn Balicki
  */
 public class CinemaBookingSystem {
-    Display display;
-    ArrayList<Cinema> cinemas;
+    private Display display;
+    private Cinema cinema;
 
     /**
      * Initializes the cinema booking system
      */
-    public CinemaBookingSystem(ArrayList<Cinema> cinemas) {
+    public CinemaBookingSystem(Cinema cinema) {
         this.display = new Display();
-        this.cinemas = cinemas;
+        this.cinema = cinema;
     }
 
+    /**
+     * Initializes the cinema booking system
+     */
     public CinemaBookingSystem() {
-        this(new ArrayList<>());
+        this.display = new Display();
+        this.cinema = new Cinema(Movies.getAllMovies());
     }
 
     /**
      * Finds showing of a movie at the given date in the given cinema.
      *
-     * @param movie  movie
-     * @param cinema cinema
-     * @param date   day of the show
+     * @param movie movie
+     * @param date  day of the show
      * @return Showing of a movie at the given time and cinema
      */
-    public Show findShow(Movie movie, Cinema cinema, Date date) {
+    public Show findShow(Movie movie, Date date) {
         return null;
     }
 
     /**
      * Finds all showings of a movie at a cinema
      *
-     * @param movie  movie
-     * @param cinema name of the cinema
+     * @param movie movie
      * @return all shows
      */
-    public ArrayList<Show> findShows(Movie movie, Cinema cinema) {
-        return null;
+    public ArrayList<Show> findShows(Movie movie) {
+        return cinema.getShows(movie);
     }
 
     /**
@@ -56,46 +57,43 @@ public class CinemaBookingSystem {
     }
 
     /**
-     * Display all the showingSeats in the show.
+     * Display all the seats in the show.
      *
-     * @param show the show whose showingSeats you're displaying
+     * @param show the show whose seats you're displaying
      */
-    public void getSeats(Show show) {
+    public void displaySeats(Show show) {
         display.displaySeats(show.getSeats());
     }
 
     /**
-     * Accept showingSeat reservations from customer.
+     * Accepts one or more seat reservations from customer.
      *
-     * @param showingSeat the showingSeat to reserve
-     * @return if the reservation was successful. If showingSeat is already taken, then return false.
+     * @param seats the seats to reserve
+     * @return if the reservation was successful. If any seats are taken, return false.
      */
-    public boolean reserveSeat(ShowingSeat showingSeat, Customer customer) {
-        boolean success = showingSeat.reserve(customer);
-        display.displaySeats(showingSeat.getShow().getSeats());
-        return false;
+
+    public boolean reserveSeats(Customer customer, Show show, Seat... seats) {
+        return show.reserve(customer, seats);
+    }
+
+    /**
+     * Cancels one or more reservations.
+     *
+     * @param show  show to cancel reservations for
+     * @param seats seats to remove reservations for
+     */
+    public void cancelReservations(Show show, Seat... seats) {
+        for (Seat seat : seats) {
+            show.cancelReservation(seat);
+        }
     }
 
     /**
      * Cancels a show and sends a message to everyone who reserved it
      *
-     * @param cinema the cinema with the canceled show
-     * @param show   the show to cancel
+     * @param show the show to cancel
      */
-    public void cancelShow(Cinema cinema, Show show) {
+    public void cancelShow(Show show) {
         cinema.cancelShow(show);
-    }
-
-    public void addCinema(Cinema cinema) {
-        cinemas.add(cinema);
-    }
-
-    public void initCinemas() {
-        Cinema[] cinemas = new Cinema[]{
-                new Cinema("Reading Cinemas", Movies.SHREK, Movies.SHREK2, Movies.PUSSINBOOTS, Movies.PUSSINBOOTS2),
-                new Cinema("Hillsborough Cinemas", Movies.SHREK2, Movies.SHREK3, Movies.SHREK4, Movies.PUSSINBOOTS2),
-                new Cinema("AMC Bridgewater", Movies.SHREK4, Movies.PUSSINBOOTS, Movies.PUSSINBOOTS2)
-        };
-        this.cinemas.addAll(Arrays.asList(cinemas));
     }
 }
