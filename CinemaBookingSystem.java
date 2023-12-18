@@ -53,7 +53,9 @@ public class CinemaBookingSystem {
      * @param show the show to display.
      */
     public void getShowDetails(Show show) {
-        display.displayText(show.getDetails());
+        display.displayText(show.getMovie().getName());
+        display.displayText(show.getTime().toString());
+        display.displayText(show.getMovie().getLength().toString());
     }
 
     /**

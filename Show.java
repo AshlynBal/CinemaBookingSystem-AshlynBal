@@ -96,15 +96,6 @@ public class Show {
     }
 
     /**
-     * Getter for movie details.
-     *
-     * @return movie details
-     */
-    public String getDetails() {
-        return movie.getDetails();
-    }
-
-    /**
      * Getter for time of the showing.
      *
      * @return time of the showing

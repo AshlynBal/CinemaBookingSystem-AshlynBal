@@ -9,25 +9,27 @@ import java.time.Duration;
  */
 public class Movie {
     private String name;
+    private String description;
     private Image image;
     private Duration length;
 
-    public Movie(String name, Image image, Duration length) {
+    public Movie(String name, Image image, Duration length, String description) {
         this.name = name;
         this.image = image;
         this.length = length;
+        this.description = description;
     }
 
-    public Movie(String name, Image image, int length) {
-        this(name, image, Duration.ofMinutes(length));
+    public Movie(String name, Image image, int length, String description) {
+        this(name, image, Duration.ofMinutes(length), description);
     }
 
-    public Movie(String name, Duration length) {
-        this(name, null, length);
+    public Movie(String name, Duration length, String description) {
+        this(name, null, length, description);
     }
 
-    public Movie(String name, int length) {
-        this(name, null, length);
+    public Movie(String name, int length, String description) {
+        this(name, null, length, description);
     }
 
     /**
@@ -58,12 +60,12 @@ public class Movie {
     }
 
     /**
-     * Returns details about the movie.
+     * Getter for movie description.
      *
-     * @return details about the movie.
+     * @return the movie's description
      */
-    public String getDetails() {
-        return null;
+    public String getDescription() {
+        return description;
     }
 
     @Override
